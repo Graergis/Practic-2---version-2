@@ -10,17 +10,18 @@ public class Rasschet {
         boolean bool = false;
         LinkedList<Double> number = new LinkedList<>();
         LinkedList<Character> charac = new LinkedList<>();
+        String str1 = "" + line;
+        Error error = new Error(str1);
+        int start = 0;
         double res = 0;
         Pattern pattern = Pattern.compile("[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?");
         Matcher matcher = pattern.matcher(line);
-        int start = 0;
         while (matcher.find(start)) {
             String value = line.substring(matcher.start(), matcher.end());
             double result = Double.parseDouble(value);
             start = matcher.end();
             number.add(result);
         }
-        String str1 = "" + line;
         String str =  str1.replace("+-", "-");
         for (int i = 1; i < str.length(); i++) {
             char c = str.charAt(i);
